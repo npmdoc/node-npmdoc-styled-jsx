@@ -1,0 +1,700 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/zeit/styled-jsx#readme">styled-jsx (v0.5.7)</a>
+</h1>
+<h4>Full CSS support for JSX without compromises</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.styled-jsx">module styled-jsx</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.style_transform">
+            function <span class="apidocSignatureSpan">styled-jsx.</span>style_transform
+            <span class="apidocSignatureSpan">(id, styles, generator, start, fileName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">styled-jsx.</span>babel</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">styled-jsx.</span>server</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">styled-jsx.</span>style</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.styled-jsx.babel">module styled-jsx.babel</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.babel.default">
+            function <span class="apidocSignatureSpan">styled-jsx.babel.</span>default
+            <span class="apidocSignatureSpan">(_ref)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.styled-jsx.server">module styled-jsx.server</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.server.default">
+            function <span class="apidocSignatureSpan">styled-jsx.server.</span>default
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.server.flushToHTML">
+            function <span class="apidocSignatureSpan">styled-jsx.server.</span>flushToHTML
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.styled-jsx.style">module styled-jsx.style</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.style.default">
+            function <span class="apidocSignatureSpan">styled-jsx.style.</span>default
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.style.flush">
+            function <span class="apidocSignatureSpan">styled-jsx.style.</span>flush
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.styled-jsx.style_transform">module styled-jsx.style_transform</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.styled-jsx.style_transform.style_transform">
+            function <span class="apidocSignatureSpan">styled-jsx.</span>style_transform
+            <span class="apidocSignatureSpan">(id, styles, generator, start, fileName)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.styled-jsx" id="apidoc.module.styled-jsx">module styled-jsx</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.style_transform" id="apidoc.element.styled-jsx.style_transform">
+        function <span class="apidocSignatureSpan">styled-jsx.</span>style_transform
+        <span class="apidocSignatureSpan">(id, styles, generator, start, fileName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stylis(id, styles, generator, start, fileName) {
+    var suffix = '[data-jsx="' + id +'"]';
+    var animationSuffix = Number(id[0]) == id[0]
+      ? `a${id}`<span class="apidocCodeCommentSpan"> /* starting with a digit requires a prefix to generate valid animation names */
+</span>      : id
+
+    var output = '';
+    var line = '';
+
+    // strip out comments
+    styles = styles.replace(regComments, '')
+
+    var len = styles.length;
+    var i = 0;
+    var lineNumber = start ? start.line : 0;
+    var columnNumber = start ? start.column : 0;
+
+    generator &amp;&amp; generator.addMapping({
+      generated: {
+        line: 1,
+        column: 0
+      },
+      source: fileName,
+      original: start
+    })
+
+    // parse + compile
+    while (i &lt; len) {
+        var code = styles.charCodeAt(i);
+
+        if (code === 10) {
+          lineNumber++;
+          columnNumber = 0;
+        }
+
+        // {, }, ; characters
+        if (code === 123 || code  === 125 || code === 59) {
+            line += styles[i];
+
+            var first = line.charCodeAt(0);
+
+            // only trim when the first character is ` `
+            if (first === 32) {
+                first = (line = line.trim()).charCodeAt(0);
+            }
+
+            // / character, line comment
+            if (first === 47) {
+                line = code === 125 ? '}' : '';
+            }
+            // @ character, special block
+            else if (first === 64) {
+                var second = line.charCodeAt(1) || 0;
+
+                // @keyframe/@root, `k` or @root, `r` character
+                if (second === 107 || second === 114) {
+                    i++;
+                    columnNumber++;
+
+                    if (second == 107) {
+                        // @keyframes
+                        line = line.substring(1, 11) + animationSuffix + line.substring(11);
+                    } else {
+                        // @root
+                        line = '';
+                    }
+
+                    var close = 0;
+
+                    while (i &lt; len) {
+                        var char = styles[i++];
+                        columnNumber++;
+                        var _code = char.charCodeAt(0);
+                        if (_code === 10) {
+                          lineNumber++;
+                          columnNumber = 0;
+                        }
+
+                        // not `\t`, `\r`, `\n` characters
+                        if (_code !== 9 &amp;&amp; _code !== 13 &amp;&amp; _code !== 10) {
+                            // } character
+                            if (_code === 125) {
+                                // previous block tag is close
+                                if (close === 1) {
+                                    break;
+                                }
+                                // current block tag is close tag
+                                else {
+                                    close = 1;
+                                }
+                            }
+                            // { character
+                            else if (_code === 123) {
+                                // current block tag is open
+                                close = 0;
+                            }
+
+                            line += char;
+                        }
+                    }
+
+                    // vendor prefix transform properties within keyframes and @root blocks
+                    line = line.replace(regSpaces, '').replace(regPrefix, '-webkit-$1-moz-$1-ms-$1$1');
+
+                    if (second === 107) {
+                        // vendor prefix keyframes blocks
+                        line = '@-webkit-'+line+'}'+'@-moz-'+line+'}@'+line+'}';
+                    } else {
+                        // vendor prefix keyframes in @root block
+                        line = line.replace(regPrefixKey, '@-webkit-$1}@-moz-$1}@$1}');
+                    }
+                }
+            } else {
+                var second = line.charCodeAt(1) || 0;
+                var third = line.charCodeAt(2) || 0;
+
+                // animation: a, n, i characters
+                if (first === 97 &amp;&amp; second === 110 &amp;&amp; third === 105) ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.styled-jsx.babel" id="apidoc.module.styled-jsx.babel">module styled-jsx.babel</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.babel.default" id="apidoc.element.styled-jsx.babel.default">
+        function <span class="apidocSignatureSpan">styled-jsx.babel.</span>default
+        <span class="apidocSignatureSpan">(_ref)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">default = function (_ref) {
+  var t = _ref.types;
+
+  var isGlobalEl = function isGlobalEl(el) {
+    return el.attributes.some(function (_ref2) {
+      var name = _ref2.name;
+      return name &amp;&amp; name.name === GLOBAL_ATTRIBUTE;
+    });
+  };
+
+  var isStyledJsx = function isStyledJsx(_ref3) {
+    var el = _ref3.node;
+    return t.isJSXElement(el) &amp;&amp; el.openingElement.name.name === 'style' &amp;&amp; el.openingElement.attributes.some(function (attr) {
+      return attr.name.name === STYLE_ATTRIBUTE;
+    });
+  };
+
+  var findStyles = function findStyles(path) {
+    if (isStyledJsx(path)) {
+      var node = path.node;
+
+      return isGlobalEl(node.openingElement) ? [path] : [];
+    }
+
+    return path.get('children').filter(isStyledJsx);
+  };
+
+  // We only allow constants to be used in template literals.
+  // The following visitor ensures that MemberExpressions and Identifiers
+  // are not in the scope of the current Method (render) or function (Component).
+  var validateExpressionVisitor = {
+    MemberExpression: function MemberExpression(path) {
+      var node = path.node;
+
+      if (t.isThisExpression(node.object) &amp;&amp; t.isIdentifier(node.property) &amp;&amp; (node.property.name === 'props' || node.property.name
+ === 'state')) {
+        throw path.buildCodeFrameError('Expected a constant ' + 'as part of the template literal expression ' + '(eg: &lt;style jsx
+&gt;{`p { color: ${myColor}`}&lt;/style&gt;), ' + ('but got a MemberExpression: this.' + node.property.name));
+      }
+    },
+    Identifier: function Identifier(path, scope) {
+      var name = path.node.name;
+
+      if (scope.hasOwnBinding(name)) {
+        throw path.buildCodeFrameError('Expected `' + name + '` ' + 'to not come from the closest scope.\n' + 'Styled JSX encourages
+ the use of constants ' + 'instead of `props` or dynamic values ' + 'which are better set via inline styles or `className` toggling
+. ' + 'See https://github.com/zeit/styled-jsx#dynamic-styles');
+      }
+    }
+  };
+
+  var getExpressionText = function getExpressionText(expr) {
+    var node = expr.node;
+
+    // assume string literal
+    if (t.isStringLiteral(node)) {
+      return node.value;
+    }
+
+    var expressions = expr.get('expressions');
+
+    // simple template literal without expressions
+    if (expressions.length === 0) {
+      return node.quasis[0].value.cooked;
+    }
+
+    // Special treatment for template literals that contain expressions:
+    //
+    // Expressions are replaced with a placeholder
+    // so that the CSS compiler can parse and
+    // transform the css source string
+    // without having to know about js literal expressions.
+    // Later expressions are restored
+    // by doing a replacement on the transformed css string.
+    //
+    // e.g.
+    // p { color: ${myConstant}; }
+    // becomes
+    // p { color: ___styledjsxexpression0___; }
+
+    var replacements = expressions.map(function (e, id) {
+      return {
+        pattern: new RegExp('\\$\\{\\s*' + (0, _escapeStringRegexp2.default)(e.getSource()) + '\\s*\\}'),
+        replacement: '___styledjsxexpression_' + id + '___',
+        initial: '${' + e.getSource() + '}'
+      };
+    }).sort(function (a, b) {
+      return a.initial.length &lt; b.initial.length;
+    });
+
+    var source = expr.getSource().slice(1, -1);
+
+    var modified = replacements.reduce(function (source, currentReplacement) {
+      source = source.replace(currentReplacement.pattern, currentReplacement.replacement);
+      return source;
+    }, source);
+
+    return {
+      source: source,
+      modified: modified,
+      replacements: replacements
+    };
+  };
+
+  var makeStyledJsxTag = function makeStyledJsxTag(id, transformedCss, isTemplateLiteral) {
+    var css = void 0;
+    if (isTemplateLiteral) {
+      // build the expression from transformedCss
+      (0, _babelTraverse2.default)((0, _babylon.parse)('`' + transformedCss + '`'), {
+        TemplateLiteral: function TemplateLiteral(path) {
+          if (!css) {
+            css = path.node;
+          }
+        }
+      });
+    } else {
+      css = t.stringLiteral(transformedCss);
+    }
+
+    return t.JSXElement(t.JSXOpeningElement(t.JSXIdentifier(STYLE_COM ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.styled-jsx.server" id="apidoc.module.styled-jsx.server">module styled-jsx.server</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.server.default" id="apidoc.element.styled-jsx.server.default">
+        function <span class="apidocSignatureSpan">styled-jsx.server.</span>default
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function flushToReact() {
+  var mem = (0, _style.flush)();
+  var arr = [];
+  for (var id in mem) {
+    if (hasOwnProperty.call(mem, id)) {
+      arr.push(_react2.default.createElement('style', {
+        id: '__jsx-style-' + id,
+        // avoid warnings upon render with a key
+        key: '__jsx-style-' + id,
+        dangerouslySetInnerHTML: {
+          __html: mem[id]
+        }
+      }));
+    }
+  }
+  return arr;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.server.flushToHTML" id="apidoc.element.styled-jsx.server.flushToHTML">
+        function <span class="apidocSignatureSpan">styled-jsx.server.</span>flushToHTML
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function flushToHTML() {
+  var mem = (0, _style.flush)();
+  var html = '';
+  for (var id in mem) {
+    if (hasOwnProperty.call(mem, id)) {
+      html += '&lt;style id="__jsx-style-' + id + '"&gt;' + mem[id] + '&lt;/style&gt;';
+    }
+  }
+  return html;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.styled-jsx.style" id="apidoc.module.styled-jsx.style">module styled-jsx.style</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.style.default" id="apidoc.element.styled-jsx.style.default">
+        function <span class="apidocSignatureSpan">styled-jsx.style.</span>default
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function _class() {
+  _classCallCheck(this, _class);
+
+  return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.style.flush" id="apidoc.element.styled-jsx.style.flush">
+        function <span class="apidocSignatureSpan">styled-jsx.style.</span>flush
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function flush() {
+  var ret = {};
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = components[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion
+ = true) {
+      var props = _step.value.props;
+
+      ret[props.styleId] = props.css;
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion &amp;&amp; _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  components = [];
+
+  return ret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.styled-jsx.style_transform" id="apidoc.module.styled-jsx.style_transform">module styled-jsx.style_transform</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.styled-jsx.style_transform.style_transform" id="apidoc.element.styled-jsx.style_transform.style_transform">
+        function <span class="apidocSignatureSpan">styled-jsx.</span>style_transform
+        <span class="apidocSignatureSpan">(id, styles, generator, start, fileName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stylis(id, styles, generator, start, fileName) {
+    var suffix = '[data-jsx="' + id +'"]';
+    var animationSuffix = Number(id[0]) == id[0]
+      ? `a${id}`<span class="apidocCodeCommentSpan"> /* starting with a digit requires a prefix to generate valid animation names */
+</span>      : id
+
+    var output = '';
+    var line = '';
+
+    // strip out comments
+    styles = styles.replace(regComments, '')
+
+    var len = styles.length;
+    var i = 0;
+    var lineNumber = start ? start.line : 0;
+    var columnNumber = start ? start.column : 0;
+
+    generator &amp;&amp; generator.addMapping({
+      generated: {
+        line: 1,
+        column: 0
+      },
+      source: fileName,
+      original: start
+    })
+
+    // parse + compile
+    while (i &lt; len) {
+        var code = styles.charCodeAt(i);
+
+        if (code === 10) {
+          lineNumber++;
+          columnNumber = 0;
+        }
+
+        // {, }, ; characters
+        if (code === 123 || code  === 125 || code === 59) {
+            line += styles[i];
+
+            var first = line.charCodeAt(0);
+
+            // only trim when the first character is ` `
+            if (first === 32) {
+                first = (line = line.trim()).charCodeAt(0);
+            }
+
+            // / character, line comment
+            if (first === 47) {
+                line = code === 125 ? '}' : '';
+            }
+            // @ character, special block
+            else if (first === 64) {
+                var second = line.charCodeAt(1) || 0;
+
+                // @keyframe/@root, `k` or @root, `r` character
+                if (second === 107 || second === 114) {
+                    i++;
+                    columnNumber++;
+
+                    if (second == 107) {
+                        // @keyframes
+                        line = line.substring(1, 11) + animationSuffix + line.substring(11);
+                    } else {
+                        // @root
+                        line = '';
+                    }
+
+                    var close = 0;
+
+                    while (i &lt; len) {
+                        var char = styles[i++];
+                        columnNumber++;
+                        var _code = char.charCodeAt(0);
+                        if (_code === 10) {
+                          lineNumber++;
+                          columnNumber = 0;
+                        }
+
+                        // not `\t`, `\r`, `\n` characters
+                        if (_code !== 9 &amp;&amp; _code !== 13 &amp;&amp; _code !== 10) {
+                            // } character
+                            if (_code === 125) {
+                                // previous block tag is close
+                                if (close === 1) {
+                                    break;
+                                }
+                                // current block tag is close tag
+                                else {
+                                    close = 1;
+                                }
+                            }
+                            // { character
+                            else if (_code === 123) {
+                                // current block tag is open
+                                close = 0;
+                            }
+
+                            line += char;
+                        }
+                    }
+
+                    // vendor prefix transform properties within keyframes and @root blocks
+                    line = line.replace(regSpaces, '').replace(regPrefix, '-webkit-$1-moz-$1-ms-$1$1');
+
+                    if (second === 107) {
+                        // vendor prefix keyframes blocks
+                        line = '@-webkit-'+line+'}'+'@-moz-'+line+'}@'+line+'}';
+                    } else {
+                        // vendor prefix keyframes in @root block
+                        line = line.replace(regPrefixKey, '@-webkit-$1}@-moz-$1}@$1}');
+                    }
+                }
+            } else {
+                var second = line.charCodeAt(1) || 0;
+                var third = line.charCodeAt(2) || 0;
+
+                // animation: a, n, i characters
+                if (first === 97 &amp;&amp; second === 110 &amp;&amp; third === 105) ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
