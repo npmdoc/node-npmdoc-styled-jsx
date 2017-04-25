@@ -1,4 +1,7 @@
-# api documentation for  [styled-jsx (v0.5.7)](https://github.com/zeit/styled-jsx#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-styled-jsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-styled-jsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-styled-jsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-styled-jsx)
+# npmdoc-styled-jsx
+
+#### basic api documentation for  [styled-jsx (v0.5.7)](https://github.com/zeit/styled-jsx#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-styled-jsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-styled-jsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-styled-jsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-styled-jsx)
+
 #### Full CSS support for JSX without compromises
 
 [![NPM](https://nodei.co/npm/styled-jsx.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/styled-jsx)
@@ -132,7 +135,8 @@
             "import/no-unresolved": 0,
             "new-cap": 0
         }
-    }
+    },
+    "bin": {}
 }
 ```
 

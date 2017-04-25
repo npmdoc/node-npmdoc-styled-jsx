@@ -1,6 +1,6 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
-    "description": "api documentation for [styled-jsx (v0.5.7)](https://github.com/zeit/styled-jsx#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-styled-jsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-styled-jsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-styled-jsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-styled-jsx)",
+    "description": "#### basic api documentation for  [styled-jsx (v0.5.7)](https://github.com/zeit/styled-jsx#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-styled-jsx.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-styled-jsx) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-styled-jsx.svg)](https://travis-ci.org/npmdoc/node-npmdoc-styled-jsx)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "styled-jsx": "*",
@@ -35,5 +35,5 @@
         "start": "PORT=${PORT:-8080} utility2 start test.js",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.1"
+    "version": "2017.4.25"
 }
